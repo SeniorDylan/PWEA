@@ -3,11 +3,17 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: #0f172a;
   color: white;
+  font-size: 1.15rem; /* Agrandissement général de la police */
 }
 
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1.2rem; /* Agrandissement de la police des paragraphes */
 }
 
 .header {
@@ -39,12 +45,14 @@ html, body {
 }
 
 .hero h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
 }
 
 section {
   padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* STATS */
@@ -57,37 +65,96 @@ section {
 
 .stat-item {
   background: rgba(255,255,255,0.05);
-  padding: 15px 25px;
+  padding: 20px 30px;
   border-radius: 10px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .stat-item span {
   display: block;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #22c55e;
 }
 
-/* DÉROULÉS */
-details {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 15px 20px;
+/* ACTUALITÉS EN BOX */
+.news-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.news-img {
+  flex: 1;
+}
+
+.news-img img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
   border-radius: 10px;
-  margin-bottom: 15px;
-  cursor: pointer;
+  display: block;
+  margin: 0 auto;
 }
 
-summary {
-  font-size: 1.2rem;
-  font-weight: bold;
+.news-content {
+  flex: 2;
+}
+
+.news-content h3 {
   color: #22c55e;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+/* MISSIONS (FAIT COMME L'ÉQUIPE) */
+.missions-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.missions-grid.show-missions {
+  display: grid;
+}
+
+.mission-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mission-card h3 {
+  color: #22c55e;
+  font-size: 1.3rem;
+  margin-top: 0;
+}
+
+.mission-card ul {
+  padding-left: 20px;
+}
+
+.mission-card li {
+  margin-bottom: 10px;
+  font-size: 1.15rem;
 }
 
 /* ÉQUIPE */
 .team-grid {
   display: none;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
   text-align: center;
   margin-top: 30px;
@@ -123,17 +190,78 @@ summary {
   object-fit: cover;
 }
 
-/* GALERIE */
-.gallery .images {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* GALERIE EN SLIDER (BIBLIOTHÈQUE) */
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
   gap: 15px;
 }
 
-.gallery img {
+.slider-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px 0;
   width: 100%;
+  scrollbar-width: none; /* Masque la barre sur Firefox */
+  scroll-snap-type: x mandatory;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Masque la barre sur Chrome/Safari */
+}
+
+.slide-box {
+  flex: 0 0 100%; /* Un slide prend toute la largeur */
+  scroll-snap-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
   border-radius: 15px;
-  transition: transform 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.slide-img {
+  width: 100%;
+  max-width: 500px;
+}
+
+.slide-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.slide-text p {
+  margin: 0;
+  font-size: 1.2rem;
+  max-width: 800px;
+}
+
+.slider-btn {
+  background: #22c55e;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: background 0.3s, transform 0.3s;
+  z-index: 10;
+}
+
+.slider-btn:hover {
+  background: #06b6d4;
+  transform: scale(1.1);
 }
 
 /* CONTACT */
@@ -146,7 +274,6 @@ summary {
   margin: 0 auto;
 }
 
-/* FORMULAIRE & BOUTONS */
 form {
   display: flex;
   flex-direction: column;
@@ -164,19 +291,25 @@ input, textarea, select {
   border: 1px solid rgba(255,255,255,0.1);
   background: rgba(15, 23, 42, 0.8);
   color: white;
+  font-size: 1.1rem;
 }
 
 button {
   background: linear-gradient(45deg, #22c55e, #06b6d4);
   border: none;
-  padding: 12px;
+  padding: 14px;
   color: white;
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1.1rem;
+  transition: transform 0.3s;
 }
 
-/* NOUVEAU STYLE DU BOUTON CTA POUR ALLER SUR LA NOUVELLE PAGE */
+button:hover {
+  transform: scale(1.03);
+}
+
 .btn-cta {
   display: inline-block;
   background: linear-gradient(45deg, #22c55e, #06b6d4);
@@ -185,7 +318,7 @@ button {
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -196,8 +329,9 @@ button {
 
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 30px;
   background: #020617;
+  font-size: 1.1rem;
 }
 
 /* ANIMATIONS */
@@ -212,21 +346,38 @@ footer {
   transform: translateY(0);
 }
 
-/* MEDIA QUERIES */
+/* SOCIALS */
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .social-icons a {
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   transition: color 0.3s, transform 0.3s;
 }
 
 .social-icons a:hover {
-  color: #06b6d4; /* Votre couleur bleu/cyan */
+  color: #06b6d4;
   transform: scale(1.2);
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .news-box {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .slide-box {
+    padding: 15px;
+  }
+  
+  .slider-btn {
+    display: none; /* Cache les flèches sur mobile pour laisser le scroll au doigt */
+  }
 }

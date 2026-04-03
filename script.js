@@ -1,40 +1,3 @@
-/*
-function join() {
-  alert("Bienvenue dans la PWEA !");
-}
-
-function sendForm(e) {
-  e.preventDefault();
-  alert("Message envoyé !");
-}
-
-let count = 0;
-let interval = setInterval(() => {
-  if (count >= 100) clearInterval(interval);
-  document.getElementById('members').innerText = count;
-  document.getElementById('events').innerText = Math.floor(count/2);
-  count++;
-}, 30);
-
-document.getElementById("form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Inscription envoyée !");
-});
-// Animation scroll style Apple
-const faders = document.querySelectorAll('.fade');
-
-const appear = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-});
-
-faders.forEach(el => appear.observe(el));
-*/
-
-
 // Animation du compteur de membres et d'événements
 let count = 0;
 let interval = setInterval(() => {
@@ -76,5 +39,38 @@ if (btnTeam && teamContainer) {
     } else {
       btnTeam.textContent = "Découvrir les membres du bureau";
     }
+  });
+}
+
+// SCRIPT POUR AFFICHER / MASQUER LES MISSIONS
+const btnMissions = document.getElementById('toggle-missions');
+const missionsContainer = document.getElementById('missions-container');
+
+if (btnMissions && missionsContainer) {
+  btnMissions.addEventListener('click', () => {
+    missionsContainer.classList.toggle('show-missions');
+    
+    // Change le texte du bouton selon l'état
+    if (missionsContainer.classList.contains('show-missions')) {
+      btnMissions.textContent = "Masquer les missions";
+    } else {
+      btnMissions.textContent = "Découvrir nos missions";
+    }
+  });
+}
+
+// SCRIPT POUR LE SLIDER DE LA GALERIE (BIBLIOTHÈQUE)
+const sliderContent = document.getElementById('slider-content');
+const btnPrev = document.getElementById('slide-prev');
+const btnNext = document.getElementById('slide-next');
+
+if (sliderContent && btnPrev && btnNext) {
+  btnNext.addEventListener('click', () => {
+    // Fait défiler d'une largeur complète de fenêtre de slider
+    sliderContent.scrollLeft += sliderContent.offsetWidth;
+  });
+
+  btnPrev.addEventListener('click', () => {
+    sliderContent.scrollLeft -= sliderContent.offsetWidth;
   });
 }
