@@ -5,7 +5,6 @@ body {
   color: white;
 }
 
-/* CORRECTIF MOBILE : Empêche l'écran de bouger latéralement */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -30,7 +29,6 @@ html, body {
   width: 60px;
 }
 
-/* HERO AVEC IMAGE DE FOND ET VOILE SOMBRE */
 .hero {
   height: 80vh;
   display: flex;
@@ -49,7 +47,7 @@ section {
   padding: 60px 20px;
 }
 
-/* STATISTIQUES */
+/* STATS */
 .stats-container {
   display: flex;
   gap: 30px;
@@ -71,45 +69,58 @@ section {
   color: #22c55e;
 }
 
-/* DESIGN DES MISSIONS EN DÉROULÉ */
+/* DÉROULÉS */
 details {
   background: rgba(255, 255, 255, 0.03);
   padding: 15px 20px;
   border-radius: 10px;
   margin-bottom: 15px;
   cursor: pointer;
-  transition: background 0.3s;
-}
-
-details:hover {
-  background: rgba(255, 255, 255, 0.08);
 }
 
 summary {
   font-size: 1.2rem;
   font-weight: bold;
   color: #22c55e;
-  outline: none;
 }
 
-details ul {
-  margin-top: 10px;
-  padding-left: 20px;
-}
-
-details ul li {
-  margin-bottom: 5px;
-  opacity: 0.9;
-}
-
-/* SECTION CONTACT */
-.contact-box {
-  background: rgba(255,255,255,0.05);
-  padding: 30px;
-  border-radius: 15px;
+/* ÉQUIPE */
+.team-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
   text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.team-grid.show-team {
+  display: grid;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+}
+
+.img-container {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 15px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid #22c55e;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* GALERIE */
@@ -125,11 +136,17 @@ details ul li {
   transition: transform 0.4s ease;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
+/* CONTACT */
+.contact-box {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* FORMULAIRE */
+/* FORMULAIRE & BOUTONS */
 form {
   display: flex;
   flex-direction: column;
@@ -149,10 +166,6 @@ input, textarea, select {
   color: white;
 }
 
-input:focus, textarea:focus, select:focus {
-  outline: 2px solid #06b6d4;
-}
-
 button {
   background: linear-gradient(45deg, #22c55e, #06b6d4);
   border: none;
@@ -161,12 +174,24 @@ button {
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 1rem;
-  transition: transform 0.3s;
 }
 
-button:hover {
-  transform: scale(1.03);
+/* NOUVEAU STYLE DU BOUTON CTA POUR ALLER SUR LA NOUVELLE PAGE */
+.btn-cta {
+  display: inline-block;
+  background: linear-gradient(45deg, #22c55e, #06b6d4);
+  color: white;
+  padding: 15px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
 }
 
 footer {
@@ -185,55 +210,4 @@ footer {
 .fade.show {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* SECTION ÉQUIPE CACHÉE PAR DÉFAUT */
-.team-grid {
-  display: none; /* C'est masqué au départ */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  text-align: center;
-  margin-top: 30px;
-}
-
-.team-grid.show-team {
-  display: grid; /* Devient visible avec le JavaScript */
-}
-
-.team-card {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 20px;
-  transition: transform 0.3s ease;
-}
-
-.team-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.img-container {
-  width: 140px;
-  height: 140px;
-  margin: 0 auto 15px;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 3px solid #22c55e;
-}
-
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.team-card h3 {
-  margin: 10px 0 5px 0;
-  font-size: 1.1rem;
-  color: #06b6d4;
-}
-
-.team-card p {
-  font-size: 0.85rem;
-  opacity: 0.8;
 }
