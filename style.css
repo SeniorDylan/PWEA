@@ -211,3 +211,16 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* MEDIA QUERIES */
+
+.social-icons a {
+  margin: 10px;
+  font-size: 30px;
+  color: #333;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #0077ff;
+}
